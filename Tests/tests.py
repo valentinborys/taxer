@@ -79,12 +79,12 @@ def test_checking_datail_of_certificate():
         print(f"Суб'єкт не співпадає: {subject} != {user_subject_certificate.text}")
 
     if valid_from == user_valid_from.text:
-        print("Дата початку дії сертифікату і на WEB однакові")
+        print("Дата початку дії сертифікату в сертифікаті і на WEB однакові")
     else:
         print(f"Дата початку дії не співпадає: {valid_from} != {user_valid_from.text}")
 
     if valid_till == user_valid_till.text:
-        print("Дата закінчення дії сертифікату і на WEB однакові")
+        print("Дата закінчення дії сертифікату в сертифікаті і на WEB однакові")
     else:
         print(f"Дата закінчення дії не співпадає: {valid_till} != {user_valid_till.text}")
 
