@@ -54,7 +54,7 @@ def test_adding_first_certificate():
         return input;
     """, dropbox).send_keys(file_path_1)
 
-    time.sleep(5)
+    # time.sleep(1)
 
 def test_checking_datail_of_certificate():
     user_name = 'Таксер Тест Тестерович'
@@ -118,7 +118,42 @@ def test_add_second_certificate():
         };
         document.body.appendChild(input);
         return input;
+    """, dropbox).send_keys(file_path_2)
+
+
+    # time.sleep(1)
+
+def test_add_second_certificate():
+
+    add_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class='btn btn-primary']")))
+    add_button.click()
+
+    dropbox = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "//dropbox[@class='dropbox ng-isolate-scope']")))
+
+    driver.execute_script("""
+        var dropbox = arguments[0];
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.style.display = 'none';
+        input.onchange = function() {
+            var rect = dropbox.getBoundingClientRect();
+            var dataTransfer = new DataTransfer();
+            dataTransfer.items.add(input.files[0]);
+            var event = new DragEvent('drop', {
+                dataTransfer: dataTransfer,
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                clientX: rect.left + (rect.width / 2),
+                clientY: rect.top + (rect.height / 2)
+            });
+            dropbox.dispatchEvent(event);
+        };
+        document.body.appendChild(input);
+        return input;
     """, dropbox).send_keys(file_path_3)
+
+    # time.sleep(1)
 
 
 def test_add_fourth_certificate():
@@ -151,6 +186,8 @@ def test_add_fourth_certificate():
         return input;
     """, dropbox).send_keys(file_path_4)
 
+    # time.sleep(1)
+
 
 def test_add_fifth_certificate():
 
@@ -182,6 +219,7 @@ def test_add_fifth_certificate():
         return input;
     """, dropbox).send_keys(file_path_5)
 
+    # time.sleep(1)
 
 def test_add_sixth_certificate():
 
@@ -213,6 +251,7 @@ def test_add_sixth_certificate():
         return input;
     """, dropbox).send_keys(file_path_6)
 
+    # time.sleep(1)
 
 def test_add_seventh_certificate():
 
@@ -243,6 +282,8 @@ def test_add_seventh_certificate():
         document.body.appendChild(input);
         return input;
     """, dropbox).send_keys(file_path_7)
+
+    # time.sleep(1)
 
 
 def test_add_eighth_certificate():
@@ -275,6 +316,8 @@ def test_add_eighth_certificate():
         return input;
     """, dropbox).send_keys(file_path_8)
 
+    # time.sleep(1)
+
 
 def test_add_ninth_certificate():
 
@@ -306,6 +349,8 @@ def test_add_ninth_certificate():
         return input;
     """, dropbox).send_keys(file_path_9)
 
+    # time.sleep(1)
+
 
 def test_add_tenth_certificate():
 
@@ -336,6 +381,7 @@ def test_add_tenth_certificate():
         document.body.appendChild(input);
         return input;
     """, dropbox).send_keys(file_path_10)
+    # time.sleep(1)
 
 
 def test_add_eleventh_certificate():
@@ -368,6 +414,6 @@ def test_add_eleventh_certificate():
         return input;
     """, dropbox).send_keys(file_path_11)
 
-    time.sleep(10)
+    time.sleep(5)
     driver.quit()
 
